@@ -1,0 +1,23 @@
+{
+  "id": "intro",
+  "title": "Visão geral",
+  "description": "Esta documentação descreve como rodar, manter e testar o MU Backend (Spring Boot + PostgreSQL).",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/mu-backend-docs/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "slug": "/",
+    "title": "Visão geral"
+  },
+  "sidebar": "docsSidebar",
+  "next": {
+    "title": "Setup rápido (local)",
+    "permalink": "/mu-backend-docs/getting-started"
+  }
+}

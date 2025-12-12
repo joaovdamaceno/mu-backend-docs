@@ -1,0 +1,26 @@
+{
+  "id": "getting-started",
+  "title": "Setup rápido (local)",
+  "description": "1) Pré-requisitos",
+  "source": "@site/docs/getting-started.md",
+  "sourceDirName": ".",
+  "slug": "/getting-started",
+  "permalink": "/mu-backend-docs/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/getting-started.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Setup rápido (local)"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Visão geral",
+    "permalink": "/mu-backend-docs/"
+  },
+  "next": {
+    "title": "Usar no IntelliJ",
+    "permalink": "/mu-backend-docs/intellij"
+  }
+}

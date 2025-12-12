@@ -1,0 +1,26 @@
+{
+  "id": "tests/junit",
+  "title": "Testes automáticos (JUnit)",
+  "description": "Onde ficam",
+  "source": "@site/docs/tests/junit.md",
+  "sourceDirName": "tests",
+  "slug": "/tests/junit",
+  "permalink": "/mu-backend-docs/tests/junit",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/tests/junit.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Testes automáticos (JUnit)"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Como testar se está funcionando",
+    "permalink": "/mu-backend-docs/tests/overview"
+  },
+  "next": {
+    "title": "Deploy no GitHub Pages",
+    "permalink": "/mu-backend-docs/deploy/github-pages"
+  }
+}

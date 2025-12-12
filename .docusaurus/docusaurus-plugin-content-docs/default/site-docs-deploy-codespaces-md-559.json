@@ -1,0 +1,26 @@
+{
+  "id": "deploy/codespaces",
+  "title": "Rodar no GitHub Codespaces",
+  "description": "Você consegue rodar o Docusaurus no browser usando GitHub Codespaces.",
+  "source": "@site/docs/deploy/codespaces.md",
+  "sourceDirName": "deploy",
+  "slug": "/deploy/codespaces",
+  "permalink": "/mu-backend-docs/deploy/codespaces",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/deploy/codespaces.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Rodar no GitHub Codespaces"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Deploy no GitHub Pages",
+    "permalink": "/mu-backend-docs/deploy/github-pages"
+  },
+  "next": {
+    "title": "Contribuindo",
+    "permalink": "/mu-backend-docs/contributing"
+  }
+}

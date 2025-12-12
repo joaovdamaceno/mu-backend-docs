@@ -1,0 +1,26 @@
+{
+  "id": "api/endpoints",
+  "title": "Endpoints",
+  "description": "Esta lista foi montada a partir dos controllers do backend.",
+  "source": "@site/docs/api/endpoints.md",
+  "sourceDirName": "api",
+  "slug": "/api/endpoints",
+  "permalink": "/mu-backend-docs/api/endpoints",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/api/endpoints.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Endpoints"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "API (visão geral)",
+    "permalink": "/mu-backend-docs/api/overview"
+  },
+  "next": {
+    "title": "Postman (coleção pronta)",
+    "permalink": "/mu-backend-docs/api/postman"
+  }
+}

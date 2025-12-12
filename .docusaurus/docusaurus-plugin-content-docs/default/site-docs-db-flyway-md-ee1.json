@@ -1,0 +1,26 @@
+{
+  "id": "db/flyway",
+  "title": "Flyway (migrations)",
+  "description": "Onde ficam as migrations",
+  "source": "@site/docs/db/flyway.md",
+  "sourceDirName": "db",
+  "slug": "/db/flyway",
+  "permalink": "/mu-backend-docs/db/flyway",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/db/flyway.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Flyway (migrations)"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Schema atual (dbdiagram)",
+    "permalink": "/mu-backend-docs/db/schema"
+  },
+  "next": {
+    "title": "Docker Desktop (PostgreSQL)",
+    "permalink": "/mu-backend-docs/db/docker"
+  }
+}

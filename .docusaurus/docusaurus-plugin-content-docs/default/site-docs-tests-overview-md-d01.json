@@ -1,0 +1,26 @@
+{
+  "id": "tests/overview",
+  "title": "Como testar se está funcionando",
+  "description": "Você pode testar de duas formas:",
+  "source": "@site/docs/tests/overview.md",
+  "sourceDirName": "tests",
+  "slug": "/tests/overview",
+  "permalink": "/mu-backend-docs/tests/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/tests/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Como testar se está funcionando"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Postman (coleção pronta)",
+    "permalink": "/mu-backend-docs/api/postman"
+  },
+  "next": {
+    "title": "Testes automáticos (JUnit)",
+    "permalink": "/mu-backend-docs/tests/junit"
+  }
+}

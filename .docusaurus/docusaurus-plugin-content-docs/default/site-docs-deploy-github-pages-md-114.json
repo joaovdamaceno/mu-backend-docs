@@ -1,0 +1,26 @@
+{
+  "id": "deploy/github-pages",
+  "title": "Deploy no GitHub Pages",
+  "description": "Você tem 2 jeitos comuns:",
+  "source": "@site/docs/deploy/github-pages.md",
+  "sourceDirName": "deploy",
+  "slug": "/deploy/github-pages",
+  "permalink": "/mu-backend-docs/deploy/github-pages",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/deploy/github-pages.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Deploy no GitHub Pages"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Testes automáticos (JUnit)",
+    "permalink": "/mu-backend-docs/tests/junit"
+  },
+  "next": {
+    "title": "Rodar no GitHub Codespaces",
+    "permalink": "/mu-backend-docs/deploy/codespaces"
+  }
+}

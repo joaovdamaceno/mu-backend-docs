@@ -1,0 +1,26 @@
+{
+  "id": "api/overview",
+  "title": "API (visão geral)",
+  "description": "A API é REST e normalmente roda em:",
+  "source": "@site/docs/api/overview.md",
+  "sourceDirName": "api",
+  "slug": "/api/overview",
+  "permalink": "/mu-backend-docs/api/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/api/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "API (visão geral)"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Troubleshooting (erros comuns)",
+    "permalink": "/mu-backend-docs/db/troubleshooting"
+  },
+  "next": {
+    "title": "Endpoints",
+    "permalink": "/mu-backend-docs/api/endpoints"
+  }
+}

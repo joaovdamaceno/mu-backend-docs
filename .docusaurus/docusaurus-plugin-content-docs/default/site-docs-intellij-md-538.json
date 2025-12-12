@@ -1,0 +1,26 @@
+{
+  "id": "intellij",
+  "title": "Usar no IntelliJ",
+  "description": "Você pode editar/rodar Docusaurus no IntelliJ como um projeto normal.",
+  "source": "@site/docs/intellij.md",
+  "sourceDirName": ".",
+  "slug": "/intellij",
+  "permalink": "/mu-backend-docs/intellij",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/intellij.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Usar no IntelliJ"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Setup rápido (local)",
+    "permalink": "/mu-backend-docs/getting-started"
+  },
+  "next": {
+    "title": "Banco de dados",
+    "permalink": "/mu-backend-docs/db/overview"
+  }
+}

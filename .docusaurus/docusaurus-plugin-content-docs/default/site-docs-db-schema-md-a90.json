@@ -1,0 +1,26 @@
+{
+  "id": "db/schema",
+  "title": "Schema atual (dbdiagram)",
+  "description": "Abaixo está o DBML pronto para colar no https com delete: cascade, que é onde o dbdiagram aceita cascade).",
+  "source": "@site/docs/db/schema.md",
+  "sourceDirName": "db",
+  "slug": "/db/schema",
+  "permalink": "/mu-backend-docs/db/schema",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/db/schema.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Schema atual (dbdiagram)"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Banco de dados",
+    "permalink": "/mu-backend-docs/db/overview"
+  },
+  "next": {
+    "title": "Flyway (migrations)",
+    "permalink": "/mu-backend-docs/db/flyway"
+  }
+}

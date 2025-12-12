@@ -1,0 +1,26 @@
+{
+  "id": "db/overview",
+  "title": "Banco de dados",
+  "description": "O MU Backend usa PostgreSQL e a ideia é manter o schema via migrations (Flyway), para o banco ficar previsível em qualquer máquina/ambiente.",
+  "source": "@site/docs/db/overview.md",
+  "sourceDirName": "db",
+  "slug": "/db/overview",
+  "permalink": "/mu-backend-docs/db/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/db/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Banco de dados"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Usar no IntelliJ",
+    "permalink": "/mu-backend-docs/intellij"
+  },
+  "next": {
+    "title": "Schema atual (dbdiagram)",
+    "permalink": "/mu-backend-docs/db/schema"
+  }
+}

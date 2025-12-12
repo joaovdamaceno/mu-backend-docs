@@ -1,0 +1,26 @@
+{
+  "id": "db/troubleshooting",
+  "title": "Troubleshooting (erros comuns)",
+  "description": "Erro PostgreSQL 18.x",
+  "source": "@site/docs/db/troubleshooting.md",
+  "sourceDirName": "db",
+  "slug": "/db/troubleshooting",
+  "permalink": "/mu-backend-docs/db/troubleshooting",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/db/troubleshooting.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Troubleshooting (erros comuns)"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Docker Desktop (PostgreSQL)",
+    "permalink": "/mu-backend-docs/db/docker"
+  },
+  "next": {
+    "title": "API (visão geral)",
+    "permalink": "/mu-backend-docs/api/overview"
+  }
+}

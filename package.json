@@ -1,0 +1,23 @@
+{
+  "name": "mu-backend-docs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Documentação do MU Backend (Spring Boot + PostgreSQL + Flyway)",
+  "scripts": {
+    "start": "docusaurus start --host 0.0.0.0 --port 3000",
+    "build": "docusaurus build",
+    "serve": "docusaurus serve --host 0.0.0.0 --port 3000",
+    "swizzle": "docusaurus swizzle",
+    "clear": "docusaurus clear",
+    "deploy": "docusaurus deploy"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.6.3",
+    "@docusaurus/preset-classic": "3.6.3",
+    "@mdx-js/react": "^3.0.1",
+    "clsx": "^2.1.1",
+    "prism-react-renderer": "^2.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

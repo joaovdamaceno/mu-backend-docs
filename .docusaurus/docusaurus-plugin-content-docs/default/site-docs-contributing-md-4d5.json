@@ -1,0 +1,22 @@
+{
+  "id": "contributing",
+  "title": "Contribuindo",
+  "description": "Fluxo simples",
+  "source": "@site/docs/contributing.md",
+  "sourceDirName": ".",
+  "slug": "/contributing",
+  "permalink": "/mu-backend-docs/contributing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/contributing.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Contribuindo"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Rodar no GitHub Codespaces",
+    "permalink": "/mu-backend-docs/deploy/codespaces"
+  }
+}

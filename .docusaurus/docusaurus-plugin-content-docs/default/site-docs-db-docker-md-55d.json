@@ -1,0 +1,26 @@
+{
+  "id": "db/docker",
+  "title": "Docker Desktop (PostgreSQL)",
+  "description": "A forma mais simples é subir só o Postgres via Docker Desktop e rodar o backend no IntelliJ.",
+  "source": "@site/docs/db/docker.md",
+  "sourceDirName": "db",
+  "slug": "/db/docker",
+  "permalink": "/mu-backend-docs/db/docker",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/db/docker.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Docker Desktop (PostgreSQL)"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Flyway (migrations)",
+    "permalink": "/mu-backend-docs/db/flyway"
+  },
+  "next": {
+    "title": "Troubleshooting (erros comuns)",
+    "permalink": "/mu-backend-docs/db/troubleshooting"
+  }
+}
