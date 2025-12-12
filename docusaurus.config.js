@@ -5,8 +5,8 @@ const config = {
   tagline: 'Documentação do backend do Website da Maratona Unioeste',
   favicon: 'img/favicon.svg',
 
-  url: 'https://joaovdamaceno.github.io',
-  baseUrl: '/mu-backend-docs/',
+  url: 'https://mudocs.dev',
+  baseUrl: '/',
 
   organizationName: 'joaovdamaceno',
   projectName: 'mu-backend-docs',
