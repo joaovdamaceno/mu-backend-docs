@@ -1,45 +1,55 @@
 const sidebars = {
   docsSidebar: [
-    'intro',
-    'getting-started',
-    'intellij',
     {
       type: 'category',
-      label: 'Banco de Dados',
+      label: 'Guia da API',
+      collapsible: false,
       items: [
-        'db/overview',
-        'db/schema',
-        'db/flyway',
-        'db/docker',
-        'db/troubleshooting',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'API',
-      items: [
+        'intro',
         'api/overview',
         'api/endpoints',
+        'api/schemas',
         'api/postman',
       ],
     },
     {
       type: 'category',
-      label: 'Testes',
+      label: 'Contributing / Dev Notes',
+      collapsed: true,
       items: [
-        'tests/overview',
-        'tests/junit',
+        'dev-notes',
+        'getting-started',
+        'intellij',
+        {
+          type: 'category',
+          label: 'Banco de Dados',
+          items: [
+            'db/overview',
+            'db/schema',
+            'db/flyway',
+            'db/docker',
+            'db/troubleshooting',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Testes',
+          items: [
+            'tests/overview',
+            'tests/junit',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Deploy',
+          items: [
+            'deploy/github-pages',
+            'deploy/codespaces',
+          ],
+        },
+        'contributing',
       ],
     },
-    {
-      type: 'category',
-      label: 'Deploy',
-      items: [
-        'deploy/github-pages',
-        'deploy/codespaces',
-      ],
-    },
-    'contributing',
   ],
 };
 

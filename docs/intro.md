@@ -1,18 +1,14 @@
 ---
 slug: /
-title: Visão geral
+title: Visão geral da API
 ---
 
-Esta documentação descreve como rodar, manter e testar o **MU Backend** (Spring Boot + PostgreSQL).
+Documentação para quem consome a API REST do **MU Backend**. Aqui você encontra uma visão rápida dos recursos disponíveis, como autenticar chamadas e quais payloads enviar ou esperar em cada endpoint.
 
-O backend atende o website da **Maratona Unioeste**, com recursos típicos como:
+👉 Os pontos principais:
+- [API → Visão geral](api/overview): portas, padrões e formato das respostas
+- [API → Endpoints](api/endpoints): rotas públicas agrupadas por controller
+- [API → Esquemas e payloads](api/schemas): exemplos rápidos de request/response
+- [API → Guia de uso (Postman)](api/postman): coleção pronta para testar
 
-- Inscrições (registrations)
-- Módulos e aulas (modules / lessons)
-- Exercícios e tags (exercises / exercise_tags)
-- Materiais extras (extra_materials)
-- Posts e seções de post (posts / post_sections)
-
-O banco é gerenciado por **migrations** (Flyway) e o backend expõe uma API REST para o frontend consumir.
-
-> Se você estiver usando Docker Desktop, comece por: **Banco de Dados → Docker Desktop**.
+Para contribuir com o backend ou configurar um ambiente local, consulte a seção **Contributing / Dev Notes** no final da navegação lateral.
