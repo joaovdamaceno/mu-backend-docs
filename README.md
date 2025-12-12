@@ -34,3 +34,12 @@ npm run serve
 ## Deploy
 
 Veja `docs/deploy/github-pages.md`.
+
+### Configurar GitHub Pages (mudocs.dev)
+
+Na página do repositório, acesse **Settings → Pages** e selecione:
+
+- **Source:** `gh-pages`
+- **Folder:** `/ (root)`
+
+Esse ajuste garante que o GitHub Pages sirva o conteúdo publicado pelo workflow (que já inclui o arquivo `CNAME` para `mudocs.dev`). Salve a configuração e aguarde o próximo deploy (ou faça um push) para que https://mudocs.dev/ use o site gerado, não os arquivos do repositório.
