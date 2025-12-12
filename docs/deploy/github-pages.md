@@ -34,6 +34,7 @@ O que você faz:
 2. Faça push
 3. Vá em **Settings → Pages**
    - Source: **GitHub Actions**
+   - Se o domínio customizado for `mudocs.dev`, ajuste a Pages Source para a branch `gh-pages` e pasta `/ (root)` (o workflow já sobe o `CNAME`).
 4. Faça um push novo (qualquer commit) e espere a Action rodar.
 
 Observação: o `baseUrl` e o `url` no `docusaurus.config.js` precisam bater com seu repo.
