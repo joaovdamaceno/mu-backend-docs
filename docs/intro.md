@@ -1,5 +1,4 @@
 ---
-slug: /
 title: Visão geral da API
 ---
 

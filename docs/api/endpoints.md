@@ -4,7 +4,7 @@ title: Endpoints
 
 # Endpoints
 
-Esta lista foi montada a partir dos controllers do backend. Consulte [Esquemas e payloads](./schemas.md) para exemplos de corpo de requisição.
+Esta lista foi montada a partir dos controllers do backend.
 
 ## Formato comum de erros
 
