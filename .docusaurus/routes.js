@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/mu-backend-docs/',
-    component: ComponentCreator('/mu-backend-docs/', '54b'),
+    component: ComponentCreator('/mu-backend-docs/', 'e58'),
     routes: [
       {
         path: '/mu-backend-docs/',
-        component: ComponentCreator('/mu-backend-docs/', '772'),
+        component: ComponentCreator('/mu-backend-docs/', '36e'),
         routes: [
           {
             path: '/mu-backend-docs/',
-            component: ComponentCreator('/mu-backend-docs/', '590'),
+            component: ComponentCreator('/mu-backend-docs/', '728'),
             routes: [
               {
                 path: '/mu-backend-docs/api/endpoints',
@@ -69,6 +69,12 @@ export default [
               {
                 path: '/mu-backend-docs/api/postman',
                 component: ComponentCreator('/mu-backend-docs/api/postman', '6f8'),
+                exact: true,
+                sidebar: "docsSidebar"
+              },
+              {
+                path: '/mu-backend-docs/api/schemas',
+                component: ComponentCreator('/mu-backend-docs/api/schemas', '136'),
                 exact: true,
                 sidebar: "docsSidebar"
               },
@@ -117,6 +123,12 @@ export default [
               {
                 path: '/mu-backend-docs/deploy/github-pages',
                 component: ComponentCreator('/mu-backend-docs/deploy/github-pages', '5f3'),
+                exact: true,
+                sidebar: "docsSidebar"
+              },
+              {
+                path: '/mu-backend-docs/dev-notes',
+                component: ComponentCreator('/mu-backend-docs/dev-notes', '668'),
                 exact: true,
                 sidebar: "docsSidebar"
               },

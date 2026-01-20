@@ -49,17 +49,17 @@
     },
     "config": "config---mu-backend-docs-5-e-9-f7c"
   },
-  "/mu-backend-docs/-54b": {
+  "/mu-backend-docs/-e58": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---mu-backend-docs-aba-6b5"
     }
   },
-  "/mu-backend-docs/-772": {
+  "/mu-backend-docs/-36e": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---mu-backend-docs-6-d-3-cc5"
   },
-  "/mu-backend-docs/-590": {
+  "/mu-backend-docs/-728": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/mu-backend-docs/api/endpoints-0c7": {
@@ -73,6 +73,10 @@
   "/mu-backend-docs/api/postman-6f8": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---mu-backend-docs-api-postman-004-64d"
+  },
+  "/mu-backend-docs/api/schemas-136": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---mu-backend-docs-api-schemas-68-a-6f1"
   },
   "/mu-backend-docs/contributing-fff": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -105,6 +109,10 @@
   "/mu-backend-docs/deploy/github-pages-5f3": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---mu-backend-docs-deploy-github-pages-114-c1a"
+  },
+  "/mu-backend-docs/dev-notes-668": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---mu-backend-docs-dev-notesfa-5-d35"
   },
   "/mu-backend-docs/getting-started-505": {
     "__comp": "__comp---theme-doc-item-178-a40",

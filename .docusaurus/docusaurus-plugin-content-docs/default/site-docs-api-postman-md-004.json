@@ -16,11 +16,11 @@
   },
   "sidebar": "docsSidebar",
   "previous": {
-    "title": "Endpoints",
-    "permalink": "/mu-backend-docs/api/endpoints"
+    "title": "Esquemas e payloads",
+    "permalink": "/mu-backend-docs/api/schemas"
   },
   "next": {
-    "title": "Como testar se está funcionando",
-    "permalink": "/mu-backend-docs/tests/overview"
+    "title": "Contributing / Dev Notes",
+    "permalink": "/mu-backend-docs/dev-notes"
   }
 }

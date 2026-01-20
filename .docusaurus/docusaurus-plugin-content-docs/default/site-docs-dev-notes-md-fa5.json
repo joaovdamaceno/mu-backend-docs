@@ -1,0 +1,26 @@
+{
+  "id": "dev-notes",
+  "title": "Contributing / Dev Notes",
+  "description": "Esta seção reúne o material para quem mantém o backend localmente.",
+  "source": "@site/docs/dev-notes.md",
+  "sourceDirName": ".",
+  "slug": "/dev-notes",
+  "permalink": "/mu-backend-docs/dev-notes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/dev-notes.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Contributing / Dev Notes"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Postman (coleção pronta)",
+    "permalink": "/mu-backend-docs/api/postman"
+  },
+  "next": {
+    "title": "Setup rápido (local)",
+    "permalink": "/mu-backend-docs/getting-started"
+  }
+}

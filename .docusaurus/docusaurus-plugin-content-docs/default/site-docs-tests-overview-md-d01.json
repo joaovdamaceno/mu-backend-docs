@@ -16,8 +16,8 @@
   },
   "sidebar": "docsSidebar",
   "previous": {
-    "title": "Postman (coleção pronta)",
-    "permalink": "/mu-backend-docs/api/postman"
+    "title": "Troubleshooting (erros comuns)",
+    "permalink": "/mu-backend-docs/db/troubleshooting"
   },
   "next": {
     "title": "Testes automáticos (JUnit)",

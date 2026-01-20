@@ -26,6 +26,11 @@
               "sidebar": "docsSidebar"
             },
             {
+              "id": "api/schemas",
+              "path": "/mu-backend-docs/api/schemas",
+              "sidebar": "docsSidebar"
+            },
+            {
               "id": "contributing",
               "path": "/mu-backend-docs/contributing",
               "sidebar": "docsSidebar"
@@ -63,6 +68,11 @@
             {
               "id": "deploy/github-pages",
               "path": "/mu-backend-docs/deploy/github-pages",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "dev-notes",
+              "path": "/mu-backend-docs/dev-notes",
               "sidebar": "docsSidebar"
             },
             {

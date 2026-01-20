@@ -69,22 +69,9 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Visão geral da API',
-                to: '/api/overview',
-              },
-              {
                 label: 'Endpoints',
                 to: '/api/endpoints',
               },
-              {
-                label: 'Esquemas e payloads',
-                to: '/api/schemas',
-              },
-              {
-                label: 'Guia de uso (Postman)',
-                to: '/api/postman',
-              },
-              {
                 label: 'Contributing / Dev Notes',
                 to: '/dev-notes',
               },

@@ -1,0 +1,26 @@
+{
+  "id": "api/schemas",
+  "title": "Esquemas e payloads",
+  "description": "Os endpoints usam JSON para request/response. Use estes exemplos como referência rápida ao montar chamadas; os campos exatos podem variar conforme as entidades/DTOs definidos no backend.",
+  "source": "@site/docs/api/schemas.md",
+  "sourceDirName": "api",
+  "slug": "/api/schemas",
+  "permalink": "/mu-backend-docs/api/schemas",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/api/schemas.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Esquemas e payloads"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Endpoints",
+    "permalink": "/mu-backend-docs/api/endpoints"
+  },
+  "next": {
+    "title": "Postman (coleção pronta)",
+    "permalink": "/mu-backend-docs/api/postman"
+  }
+}

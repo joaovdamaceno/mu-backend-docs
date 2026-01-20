@@ -1,7 +1,7 @@
 {
   "id": "api/endpoints",
   "title": "Endpoints",
-  "description": "Esta lista foi montada a partir dos controllers do backend.",
+  "description": "Esta lista foi montada a partir dos controllers do backend. Consulte Esquemas e payloads para exemplos de corpo",
   "source": "@site/docs/api/endpoints.md",
   "sourceDirName": "api",
   "slug": "/api/endpoints",
@@ -20,7 +20,7 @@
     "permalink": "/mu-backend-docs/api/overview"
   },
   "next": {
-    "title": "Postman (coleção pronta)",
-    "permalink": "/mu-backend-docs/api/postman"
+    "title": "Esquemas e payloads",
+    "permalink": "/mu-backend-docs/api/schemas"
   }
 }

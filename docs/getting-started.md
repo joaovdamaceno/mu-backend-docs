@@ -18,21 +18,5 @@ title: Setup rápido (local)
 Se o backend depender de variáveis de ambiente (DB_URL, DB_USERNAME, DB_PASSWORD), configure no Run Configurations do IntelliJ:
 
 - `DB_URL=jdbc:postgresql://localhost:5432/mu`
-- `DB_USERNAME=postgres`
-- `DB_PASSWORD=postgres`
-
-## 3) Ver se subiu
-
-- `GET http://localhost:8080/actuator/health` (se o actuator estiver ligado)
-- ou teste um endpoint que exista no seu projeto (ex.: posts)
-
-## 4) Rodar esta documentação
-
-Dentro da pasta desta doc:
-
-```bash
-npm install
-npm run start
-```
-
-Abra: http://localhost:3000
+- `DB_USERNAME=muuser`
+- `DB_PASSWORD=mupass`

@@ -16,8 +16,8 @@
   },
   "sidebar": "docsSidebar",
   "previous": {
-    "title": "Troubleshooting (erros comuns)",
-    "permalink": "/mu-backend-docs/db/troubleshooting"
+    "title": "Visão geral da API",
+    "permalink": "/mu-backend-docs/"
   },
   "next": {
     "title": "Endpoints",

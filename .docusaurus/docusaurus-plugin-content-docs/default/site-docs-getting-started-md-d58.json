@@ -16,8 +16,8 @@
   },
   "sidebar": "docsSidebar",
   "previous": {
-    "title": "Visão geral",
-    "permalink": "/mu-backend-docs/"
+    "title": "Contributing / Dev Notes",
+    "permalink": "/mu-backend-docs/dev-notes"
   },
   "next": {
     "title": "Usar no IntelliJ",
