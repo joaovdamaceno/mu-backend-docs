@@ -72,6 +72,7 @@ const config = {
                 label: 'Endpoints',
                 to: '/api/endpoints',
               },
+              {
                 label: 'Contributing / Dev Notes',
                 to: '/dev-notes',
               },

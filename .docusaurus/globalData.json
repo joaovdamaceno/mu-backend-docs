@@ -1,103 +1,33 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/mu-backend-docs/",
+      "path": "/",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/mu-backend-docs/",
+          "path": "/",
           "mainDocId": "intro",
           "docs": [
             {
               "id": "api/endpoints",
-              "path": "/mu-backend-docs/api/endpoints",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "api/overview",
-              "path": "/mu-backend-docs/api/overview",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "api/postman",
-              "path": "/mu-backend-docs/api/postman",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "api/schemas",
-              "path": "/mu-backend-docs/api/schemas",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "contributing",
-              "path": "/mu-backend-docs/contributing",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "db/docker",
-              "path": "/mu-backend-docs/db/docker",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "db/flyway",
-              "path": "/mu-backend-docs/db/flyway",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "db/overview",
-              "path": "/mu-backend-docs/db/overview",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "db/schema",
-              "path": "/mu-backend-docs/db/schema",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "db/troubleshooting",
-              "path": "/mu-backend-docs/db/troubleshooting",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "deploy/codespaces",
-              "path": "/mu-backend-docs/deploy/codespaces",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "deploy/github-pages",
-              "path": "/mu-backend-docs/deploy/github-pages",
+              "path": "/api/endpoints",
               "sidebar": "docsSidebar"
             },
             {
               "id": "dev-notes",
-              "path": "/mu-backend-docs/dev-notes",
+              "path": "/dev-notes",
               "sidebar": "docsSidebar"
             },
             {
               "id": "getting-started",
-              "path": "/mu-backend-docs/getting-started",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "intellij",
-              "path": "/mu-backend-docs/intellij",
+              "path": "/getting-started",
               "sidebar": "docsSidebar"
             },
             {
               "id": "intro",
-              "path": "/mu-backend-docs/",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "tests/junit",
-              "path": "/mu-backend-docs/tests/junit",
-              "sidebar": "docsSidebar"
-            },
-            {
-              "id": "tests/overview",
-              "path": "/mu-backend-docs/tests/overview",
+              "path": "/intro",
               "sidebar": "docsSidebar"
             }
           ],
@@ -105,7 +35,7 @@
           "sidebars": {
             "docsSidebar": {
               "link": {
-                "path": "/mu-backend-docs/",
+                "path": "/intro",
                 "label": "intro"
               }
             }

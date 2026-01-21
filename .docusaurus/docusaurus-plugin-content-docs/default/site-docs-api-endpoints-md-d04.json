@@ -1,11 +1,11 @@
 {
   "id": "api/endpoints",
   "title": "Endpoints",
-  "description": "Esta lista foi montada a partir dos controllers do backend. Consulte Esquemas e payloads para exemplos de corpo",
+  "description": "Esta lista foi montada a partir dos controllers do backend.",
   "source": "@site/docs/api/endpoints.md",
   "sourceDirName": "api",
   "slug": "/api/endpoints",
-  "permalink": "/mu-backend-docs/api/endpoints",
+  "permalink": "/api/endpoints",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/api/endpoints.md",
@@ -16,11 +16,11 @@
   },
   "sidebar": "docsSidebar",
   "previous": {
-    "title": "API (visão geral)",
-    "permalink": "/mu-backend-docs/api/overview"
+    "title": "Visão geral da API",
+    "permalink": "/intro"
   },
   "next": {
-    "title": "Esquemas e payloads",
-    "permalink": "/mu-backend-docs/api/schemas"
+    "title": "Contributing / Dev Notes",
+    "permalink": "/dev-notes"
   }
 }

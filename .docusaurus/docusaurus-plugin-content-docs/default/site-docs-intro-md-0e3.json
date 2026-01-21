@@ -4,20 +4,19 @@
   "description": "Documentação para quem consome a API REST do MU Backend. Aqui você encontra uma visão rápida dos recursos disponíveis, como autenticar chamadas e quais payloads enviar ou esperar em cada endpoint.",
   "source": "@site/docs/intro.md",
   "sourceDirName": ".",
-  "slug": "/",
-  "permalink": "/mu-backend-docs/",
+  "slug": "/intro",
+  "permalink": "/intro",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/intro.md",
   "tags": [],
   "version": "current",
   "frontMatter": {
-    "slug": "/",
     "title": "Visão geral da API"
   },
   "sidebar": "docsSidebar",
   "next": {
-    "title": "API (visão geral)",
-    "permalink": "/mu-backend-docs/api/overview"
+    "title": "Endpoints",
+    "permalink": "/api/endpoints"
   }
 }

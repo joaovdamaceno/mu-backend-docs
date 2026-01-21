@@ -7,8 +7,8 @@ export default {
   "title": "MU Backend",
   "tagline": "Documentação do backend do Website da Maratona Unioeste",
   "favicon": "img/favicon.svg",
-  "url": "https://joaovdamaceno.github.io",
-  "baseUrl": "/mu-backend-docs/",
+  "url": "https://mudocs.dev",
+  "baseUrl": "/",
   "organizationName": "joaovdamaceno",
   "projectName": "mu-backend-docs",
   "onBrokenLinks": "throw",
@@ -69,20 +69,8 @@ export default {
           "title": "Docs",
           "items": [
             {
-              "label": "Visão geral da API",
-              "to": "/api/overview"
-            },
-            {
               "label": "Endpoints",
               "to": "/api/endpoints"
-            },
-            {
-              "label": "Esquemas e payloads",
-              "to": "/api/schemas"
-            },
-            {
-              "label": "Guia de uso (Postman)",
-              "to": "/api/postman"
             },
             {
               "label": "Contributing / Dev Notes",
@@ -91,7 +79,7 @@ export default {
           ]
         }
       ],
-      "copyright": "Copyright © 2025 MU."
+      "copyright": "Copyright © 2026 MU."
     },
     "prism": {
       "theme": {

@@ -5,7 +5,7 @@
   "source": "@site/docs/dev-notes.md",
   "sourceDirName": ".",
   "slug": "/dev-notes",
-  "permalink": "/mu-backend-docs/dev-notes",
+  "permalink": "/dev-notes",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/dev-notes.md",
@@ -16,11 +16,11 @@
   },
   "sidebar": "docsSidebar",
   "previous": {
-    "title": "Postman (coleção pronta)",
-    "permalink": "/mu-backend-docs/api/postman"
+    "title": "Endpoints",
+    "permalink": "/api/endpoints"
   },
   "next": {
     "title": "Setup rápido (local)",
-    "permalink": "/mu-backend-docs/getting-started"
+    "permalink": "/getting-started"
   }
 }

@@ -5,7 +5,7 @@
   "source": "@site/docs/getting-started.md",
   "sourceDirName": ".",
   "slug": "/getting-started",
-  "permalink": "/mu-backend-docs/getting-started",
+  "permalink": "/getting-started",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/joaovdamaceno/mu-backend-docs/tree/main/docs/getting-started.md",
@@ -17,10 +17,6 @@
   "sidebar": "docsSidebar",
   "previous": {
     "title": "Contributing / Dev Notes",
-    "permalink": "/mu-backend-docs/dev-notes"
-  },
-  "next": {
-    "title": "Usar no IntelliJ",
-    "permalink": "/mu-backend-docs/intellij"
+    "permalink": "/dev-notes"
   }
 }
