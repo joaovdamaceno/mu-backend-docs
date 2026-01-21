@@ -7,6 +7,7 @@ const sidebars = {
       items: [
         'intro',
         'api/endpoints',
+        'api/postman',
       ],
     },
     {
