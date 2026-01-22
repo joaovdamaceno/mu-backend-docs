@@ -1,7 +1,9 @@
 {
   "info": {
+    "_postman_id": "1252d338-7599-4cce-b44a-279f36aa89e0",
     "name": "MU Backend - Testes",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43349616"
   },
   "item": [
     {
@@ -24,7 +26,8 @@
             "modules"
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Modules - Create",
@@ -36,6 +39,10 @@
             "value": "application/json"
           }
         ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Introdução\",\n  \"notes\": \"Notas\"\n}"
+        },
         "url": {
           "raw": "{{baseUrl}}/api/modules",
           "host": [
@@ -45,12 +52,9 @@
             "api",
             "modules"
           ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"title\": \"Introdução\",\n  \"notes\": \"Notas\"\n}"
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Modules - Get by id",
@@ -73,7 +77,8 @@
             "1"
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Lessons - List by module",
@@ -97,7 +102,8 @@
             "lessons"
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Lessons - Create in module",
@@ -109,6 +115,10 @@
             "value": "application/json"
           }
         ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Aula 01\",\n  \"videoUrl\": \"https://youtu.be/...\",\n  \"position\": 1\n}"
+        },
         "url": {
           "raw": "{{baseUrl}}/api/modules/1/lessons",
           "host": [
@@ -120,12 +130,9 @@
             "1",
             "lessons"
           ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"title\": \"Aula 01\",\n  \"videoUrl\": \"https://youtu.be/...\",\n  \"position\": 1\n}"
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Exercises - List by module",
@@ -149,7 +156,8 @@
             "exercises"
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Exercises - Create in module",
@@ -161,6 +169,10 @@
             "value": "application/json"
           }
         ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Two Sum\",\n  \"difficulty\": 1,\n  \"link\": \"https://leetcode.com/problems/two-sum\"\n}"
+        },
         "url": {
           "raw": "{{baseUrl}}/api/modules/1/exercises",
           "host": [
@@ -172,12 +184,9 @@
             "1",
             "exercises"
           ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"title\": \"Two Sum\",\n  \"difficulty\": 1,\n  \"link\": \"https://leetcode.com/problems/two-sum\"\n}"
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Extra materials - List by module",
@@ -201,7 +210,8 @@
             "materials"
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Extra materials - Create in module",
@@ -213,6 +223,10 @@
             "value": "application/json"
           }
         ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Lista 01\",\n  \"link\": \"https://...\"\n}"
+        },
         "url": {
           "raw": "{{baseUrl}}/api/modules/1/materials",
           "host": [
@@ -224,12 +238,9 @@
             "1",
             "materials"
           ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"title\": \"Lista 01\",\n  \"link\": \"https://...\"\n}"
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Posts - List",
@@ -251,7 +262,8 @@
             "posts"
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Posts - Create",
@@ -263,6 +275,10 @@
             "value": "application/json"
           }
         ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Primeiro post\",\n  \"tag\": \"news\",\n  \"coverImageUrl\": \"https://...\",\n  \"mainText\": \"texto\"\n}"
+        },
         "url": {
           "raw": "{{baseUrl}}/api/posts",
           "host": [
@@ -272,12 +288,9 @@
             "api",
             "posts"
           ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"title\": \"Primeiro post\",\n  \"tag\": \"news\",\n  \"coverImageUrl\": \"https://...\",\n  \"mainText\": \"texto\"\n}"
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Posts - Get by id",
@@ -300,7 +313,8 @@
             "1"
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Registrations - List",
@@ -322,7 +336,8 @@
             "registrations"
           ]
         }
-      }
+      },
+      "response": []
     },
     {
       "name": "Registrations - Create",
@@ -334,6 +349,10 @@
             "value": "application/json"
           }
         ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Fulano\",\n  \"email\": \"fulano@email.com\",\n  \"whatsapp\": \"+55 45 99999-9999\",\n  \"institution\": \"UNIOESTE\"\n}"
+        },
         "url": {
           "raw": "{{baseUrl}}/api/registrations",
           "host": [
@@ -343,12 +362,76 @@
             "api",
             "registrations"
           ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Auth - Login",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
         },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"Fulano\",\n  \"email\": \"fulano@email.com\",\n  \"whatsapp\": \"+55 45 99999-9999\",\n  \"institution\": \"UNIOESTE\"\n}"
+          "raw": "{ \"username\": \"admin\", \"password\": \"ADMINMUShiro\" }\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
         }
-      }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "username",
+      "value": ""
+    },
+    {
+      "key": "password",
+      "value": ""
     }
   ]
 }
