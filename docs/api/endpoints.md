@@ -8,265 +8,136 @@ Esta lista foi montada a partir dos controllers do backend.
 
 ## Formato comum de erros
 
-Todos os erros são retornados em JSON. O backend encapsula a mensagem humana, um código de erro estável e eventuais mensagens de validação por campo.
+Todos os erros são retornados em JSON no formato abaixo (conforme `ApiError`):
 
 ```json
 {
-  "error": "ValidationError",
-  "message": "Campos obrigatórios não informados",
-  "code": "VALIDATION_FAILED",
-  "fields": {
-    "title": ["não pode ser vazio"],
-    "email": ["formato inválido"]
-  },
-  "traceId": "6f3c1f52a4b6"
+  "timestamp": "2026-01-10T14:45:01.123Z",
+  "status": 400,
+  "code": "VALIDATION_ERROR",
+  "message": "Falha de validação dos dados enviados.",
+  "path": "/api/modules",
+  "details": [
+    {
+      "field": "title",
+      "message": "Título é obrigatório",
+      "rejectedValue": ""
+    }
+  ]
 }
 ```
 
-- **400**: erros de validação (`VALIDATION_FAILED`), corpos malformados (`BAD_REQUEST`).
-- **401/403**: credenciais ausentes ou sem permissão (`UNAUTHORIZED`, `FORBIDDEN`).
-- **404**: recurso não encontrado (`NOT_FOUND`).
-- **409**: conflitos de estado (`CONFLICT`).
-- **422**: falhas de semântica específicas do domínio (`UNPROCESSABLE_ENTITY`).
-- **500**: falha inesperada no backend (`INTERNAL_ERROR`), sempre com `traceId` para correlação.
+Campos:
+- `timestamp`: instante UTC da falha.
+- `status`: status HTTP.
+- `code`: código estável de erro.
+- `message`: mensagem humana.
+- `path`: endpoint chamado.
+- `details`: lista de erros detalhados (validação/parse/constraint). Pode vir vazia.
 
-## ExerciseController
+Códigos de erro possíveis no backend:
+- **400**: `VALIDATION_ERROR`, `INVALID_JSON`, `BUSINESS_VALIDATION`, `BAD_REQUEST`.
+- **401**: `UNAUTHORIZED`.
+- **403**: `FORBIDDEN`.
+- **404**: `RESOURCE_NOT_FOUND`.
+- **409**: `CONFLICT`.
+- **429**: `LOGIN_RATE_LIMIT_EXCEEDED`.
+- **500**: `INTERNAL_ERROR`.
 
-Base path: `/api/modules/{moduleId}/lessons/{lessonId}/exercises`
+## AuthController
 
-### GET `/api/modules/{moduleId}/lessons/{lessonId}/exercises` (list)
+Base path: `/api/auth`
 
-| Parâmetro    | Local | Tipo    | Obrigatório | Descrição                          |
-|---|---|---|---|---|
-| `moduleId`   | path  | integer | Sim         | Identificador do módulo pai.       |
-| `lessonId`   | path  | integer | Sim         | Identificador da aula.             |
-| `page`       | query | integer | Não         | Página (default 1).                |
-| `pageSize`   | query | integer | Não         | Tamanho da página (default 10).    |
-| `difficulty` | query | integer | Não         | Filtra pela dificuldade cadastrada.|
-
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
-
-```http
-GET /api/modules/12/lessons/1/exercises?page=1&pageSize=10
-```
-
-**Respostas**
-
-| Status | Descrição                           | Payload                 |
-|---|---|---|
-| `200`  | Lista paginada de exercícios da aula.| Ver exemplo abaixo.     |
-| `404`  | Módulo ou aula não encontrados.      | Formato de erro comum.  |
-| `500`  | Falha inesperada.                    | Formato de erro comum.  |
-
-**Payload `200`:**
-
-```json
-{
-  "items": [
-    { "id": 99, "moduleId": 12, "lessonId": 1, "title": "Two Sum", "difficulty": 1, "link": "https://..." }
-  ],
-  "page": 1,
-  "pageSize": 10,
-  "total": 23
-}
-```
-
-### POST `/api/modules/{moduleId}/lessons/{lessonId}/exercises` (create)
-
-| Parâmetro  | Local | Tipo    | Obrigatório | Descrição                    |
-|---|---|---|---|---|
-| `moduleId` | path  | integer | Sim         | Identificador do módulo pai. |
-| `lessonId` | path  | integer | Sim         | Identificador da aula.       |
+### POST `/api/auth/login` (login)
 
 **Corpo (JSON)**
 
-| Campo        | Tipo    | Obrigatório | Descrição                           |
+| Campo      | Tipo   | Obrigatório | Descrição                  |
 |---|---|---|---|
-| `title`      | string  | Sim         | Nome exibido para o exercício.      |
-| `difficulty` | integer | Não         | Nível de dificuldade (0–2).         |
-| `link`       | string  | Não         | URL para o enunciado/código.        |
-
-- **Exemplo de requisição**:
-
-```json
-{
-  "title": "Two Sum",
-  "difficulty": 1,
-  "link": "https://..."
-}
-```
+| `username` | string | Sim         | Usuário para autenticação. |
+| `password` | string | Sim         | Senha do usuário.          |
 
 **Respostas**
 
-| Status   | Descrição                 | Payload                |
+| Status | Descrição                               | Payload                |
 |---|---|---|
-| `201`    | Exercício criado.         | Ver exemplo abaixo.    |
-| `400/422`| Erro de validação.        | Formato de erro comum. |
-| `404`    | Módulo ou aula não encontrados.| Formato de erro comum. |
-| `500`    | Falha inesperada.         | Formato de erro comum. |
+| `200`  | Login efetuado com sucesso.             | `{ "token": "<jwt>" }` |
+| `400`  | Erro de validação/JSON inválido.        | Formato de erro comum. |
+| `401`  | Credenciais inválidas.                  | Formato de erro comum. |
+| `429`  | Muitas tentativas de login.             | Formato de erro comum. |
+| `500`  | Falha inesperada.                       | Formato de erro comum. |
 
-**Payload `201`:**
+## ContestController
 
-```json
-{ "id": 101, "moduleId": 12, "lessonId": 1, "title": "Two Sum", "difficulty": 1, "link": "https://..." }
-```
+Base path: `/api/contests`
 
-## LessonController
+### GET `/api/contests` (list)
 
-Base path: `/api/modules/{moduleId}/lessons`
-
-### GET `/api/modules/{moduleId}/lessons` (list)
-
-| Parâmetro  | Local | Tipo    | Obrigatório | Descrição                       |
+| Parâmetro | Local | Tipo    | Obrigatório | Descrição                         |
 |---|---|---|---|---|
-| `moduleId` | path  | integer | Sim         | Identificador do módulo pai.    |
-| `page`     | query | integer | Não         | Página (default 1).             |
-| `pageSize` | query | integer | Não         | Tamanho da página (default 10). |
-
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
-
-```http
-GET /api/modules/12/lessons?page=1&pageSize=10
-```
+| `page`    | query | integer | Não         | Página (default `0`, mínimo `0`). |
+| `size`    | query | integer | Não         | Tamanho (default `20`, `1..100`). |
 
 **Respostas**
 
-| Status | Descrição                 | Payload                |
+| Status | Descrição                     | Payload                |
 |---|---|---|
-| `200`  | Lista paginada de aulas.  | Ver exemplo abaixo.    |
-| `404`  | Módulo não encontrado.     | Formato de erro comum. |
-| `500`  | Falha inesperada.          | Formato de erro comum. |
+| `200`  | Página de contests.           | Page de `ContestResponse`. |
+| `400`  | Query params inválidos.       | Formato de erro comum. |
+| `500`  | Falha inesperada.             | Formato de erro comum. |
 
-**Payload `200`:**
+### GET `/api/contests/{id}` (get)
 
-```json
-{
-  "items": [
-    { "id": 5, "moduleId": 12, "title": "Aula 01", "videoUrl": "https://youtube.com/...", "position": 1 }
-  ],
-  "page": 1,
-  "pageSize": 10,
-  "total": 8
-}
-```
-
-### POST `/api/modules/{moduleId}/lessons` (create)
-
-| Parâmetro  | Local | Tipo    | Obrigatório | Descrição                    |
+| Parâmetro | Local | Tipo    | Obrigatório | Descrição                 |
 |---|---|---|---|---|
-| `moduleId` | path  | integer | Sim         | Identificador do módulo pai. |
+| `id`      | path  | integer | Sim         | ID do contest.            |
+
+**Respostas:** `200`, `404`, `500`.
+
+### POST `/api/contests` (create)
 
 **Corpo (JSON)**
 
-| Campo      | Tipo    | Obrigatório | Descrição            |
+| Campo                | Tipo      | Obrigatório | Descrição |
 |---|---|---|---|
-| `title`    | string  | Sim         | Nome da aula.        |
-| `videoUrl` | string  | Não         | URL para o vídeo.    |
-| `position` | integer | Não         | Ordem dentro do módulo.|
+| `name`               | string    | Sim         | Nome do contest. |
+| `durationMinutes`    | integer   | Sim         | Duração (>0). |
+| `startDateTime`      | datetime  | Sim         | Data/hora de início. |
+| `teamBased`          | boolean   | Não         | Se é por equipes. |
+| `codeforcesMirrorUrl`| string    | Não         | URL HTTP/HTTPS opcional. |
 
-- **Exemplo de requisição**:
+**Respostas:** `201`, `400`, `500`.
 
-```json
-{
-  "title": "Aula 01",
-  "videoUrl": "https://youtube.com/...",
-  "position": 1
-}
-```
+### PUT `/api/contests/{id}` (update)
 
-**Respostas**
+Mesma estrutura do create.
 
-| Status    | Descrição             | Payload                |
-|---|---|---|
-| `201`     | Aula criada.          | Ver exemplo abaixo.    |
-| `400/422` | Erro de validação.    | Formato de erro comum. |
-| `404`     | Módulo não encontrado.| Formato de erro comum. |
-| `500`     | Falha inesperada.     | Formato de erro comum. |
+**Respostas:** `200`, `400`, `404`, `500`.
 
-**Payload `201`:**
+### DELETE `/api/contests/{id}` (delete)
 
-```json
-{ "id": 6, "moduleId": 12, "title": "Aula 01", "videoUrl": "https://youtube.com/...", "position": 1 }
-```
+**Respostas:** `200`, `404`, `500`.
 
-## ExtraMaterialController
+### GET `/api/contests/{contestId}/teams` (list teams)
 
-Base path: `/api/modules/{moduleId}/materials`
+**Respostas:** `200`, `404`, `500`.
 
-### GET `/api/modules/{moduleId}/materials` (list)
-
-| Parâmetro  | Local | Tipo    | Obrigatório | Descrição                       |
-|---|---|---|---|---|
-| `moduleId` | path  | integer | Sim         | Identificador do módulo pai.    |
-| `page`     | query | integer | Não         | Página (default 1).             |
-| `pageSize` | query | integer | Não         | Tamanho da página (default 10). |
-
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
-
-```http
-GET /api/modules/12/materials?page=1&pageSize=10
-```
-
-**Respostas**
-
-| Status | Descrição                    | Payload                |
-|---|---|---|
-| `200`  | Materiais extras paginados.   | Ver exemplo abaixo.    |
-| `404`  | Módulo não encontrado.         | Formato de erro comum. |
-| `500`  | Falha inesperada.              | Formato de erro comum. |
-
-**Payload `200`:**
-
-```json
-{
-  "items": [
-    { "id": 3, "moduleId": 12, "title": "Slides", "url": "https://..." }
-  ],
-  "page": 1,
-  "pageSize": 10,
-  "total": 4
-}
-```
-
-### POST `/api/modules/{moduleId}/materials` (create)
-
-| Parâmetro  | Local | Tipo    | Obrigatório | Descrição                    |
-|---|---|---|---|---|
-| `moduleId` | path  | integer | Sim         | Identificador do módulo pai. |
+### POST `/api/contests/{contestId}/teams` (register team)
 
 **Corpo (JSON)**
 
-| Campo   | Tipo   | Obrigatório | Descrição                    |
+| Campo             | Tipo    | Obrigatório | Descrição |
 |---|---|---|---|
-| `title` | string | Sim         | Nome do material.            |
-| `url`   | string | Sim         | Link direto para o material. |
+| `teamName`        | string  | Condicional | Obrigatório se `teamBased=true`. |
+| `coachName`       | string  | Não         | Nome do coach. |
+| `institution`     | string  | Não         | Instituição. |
+| `competitor1Name` | string  | Sim         | Competidor 1. |
+| `competitor2Name` | string  | Condicional | Obrigatório se `teamBased=true`. |
+| `competitor3Name` | string  | Condicional | Obrigatório se `teamBased=true`. |
+| `reserveName`     | string  | Não         | Reserva. |
+| `cafeComLeite`    | boolean | Não         | Time café com leite. |
 
-- **Exemplo de requisição**:
-
-```json
-{
-  "title": "Slides",
-  "url": "https://..."
-}
-```
-
-**Respostas**
-
-| Status    | Descrição               | Payload                |
-|---|---|---|
-| `201`     | Material criado.        | Ver exemplo abaixo.    |
-| `400/422` | Erro de validação.      | Formato de erro comum. |
-| `404`     | Módulo não encontrado.  | Formato de erro comum. |
-| `500`     | Falha inesperada.       | Formato de erro comum. |
-
-**Payload `201`:**
-
-```json
-{ "id": 4, "moduleId": 12, "title": "Slides", "url": "https://..." }
-```
+**Respostas:** `201`, `400` (`VALIDATION_ERROR`/`BUSINESS_VALIDATION`), `404`, `409`, `500`.
 
 ## ModuleController
 
@@ -274,156 +145,141 @@ Base path: `/api/modules`
 
 ### GET `/api/modules` (list)
 
-| Parâmetro  | Local | Tipo    | Obrigatório | Descrição                           |
+| Parâmetro | Local | Tipo    | Obrigatório | Descrição                         |
 |---|---|---|---|---|
-| `page`     | query | integer | Não         | Página (default 1).                 |
-| `pageSize` | query | integer | Não         | Tamanho da página (default 10).     |
-| `search`   | query | string  | Não         | Filtra por título do módulo.        |
+| `page`    | query | integer | Não         | Página (default `0`, mínimo `0`). |
+| `size`    | query | integer | Não         | Tamanho (default `20`, `1..100`). |
 
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
+**Respostas:** `200`, `400`, `500`.
 
-```http
-GET /api/modules?page=1&pageSize=10&search=introducao
-```
+### GET `/api/modules/full` (list full)
 
-**Respostas**
-
-| Status | Descrição                | Payload                |
-|---|---|---|
-| `200`  | Lista paginada de módulos.| Ver exemplo abaixo.    |
-| `500`  | Falha inesperada.         | Formato de erro comum. |
-
-**Payload `200`:**
-
-```json
-{
-  "items": [
-    { "id": 12, "title": "Introdução", "notes": "...", "lessonsCount": 8, "exercisesCount": 23 }
-  ],
-  "page": 1,
-  "pageSize": 10,
-  "total": 14
-}
-```
+**Respostas:** `200`, `500`.
 
 ### GET `/api/modules/{id}` (get)
 
-| Parâmetro | Local | Tipo    | Obrigatório | Descrição                 |
-|---|---|---|---|---|
-| `id`      | path  | integer | Sim         | Identificador do módulo.  |
+**Respostas:** `200`, `404`, `500`.
 
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
+### POST `/api/modules` (create legacy)
 
-```http
-GET /api/modules/12
-```
-
-**Respostas**
-
-| Status | Descrição               | Payload                |
-|---|---|---|
-| `200`  | Detalhe do módulo.      | Ver exemplo abaixo.    |
-| `404`  | Módulo não encontrado.  | Formato de erro comum. |
-| `500`  | Falha inesperada.       | Formato de erro comum. |
-
-**Payload `200`:**
-
-```json
-{ "id": 12, "title": "Introdução", "notes": "Texto opcional", "lessonsCount": 8, "exercisesCount": 23 }
-```
-
-### POST `/api/modules` (create)
-
-**Corpo (JSON)**
-
-| Campo   | Tipo   | Obrigatório | Descrição                         |
+| Campo       | Tipo    | Obrigatório | Descrição |
 |---|---|---|---|
-| `title` | string | Sim         | Nome do módulo.                   |
-| `notes` | string | Não         | Anotações ou descrição longa.     |
+| `title`     | string  | Sim         | Nome do módulo. |
+| `notes`     | string  | Não         | Anotações. |
+| `published` | boolean | Não         | Publicado (default true). |
 
-- **Exemplo de requisição**:
+**Respostas:** `201`, `400`, `500`.
 
-```json
-{
-  "title": "Introdução",
-  "notes": "Texto opcional (pode ser grande)"
-}
-```
+### POST `/api/modules/full` (create full)
 
-**Respostas**
+Corpo `ModuleAggregateRequest`:
+- `title`, `notes`, `published`
+- `lessons[]` (title, videoUrl, orderIndex)
+- `exercises[]` (title, ojUrl, difficulty, tags[])
+- `extraMaterials[]` (title, url)
 
-| Status    | Descrição            | Payload                |
-|---|---|---|
-| `201`     | Módulo criado.       | Ver exemplo abaixo.    |
-| `400/422` | Erro de validação.   | Formato de erro comum. |
-| `500`     | Falha inesperada.    | Formato de erro comum. |
+**Respostas:** `201`, `400`, `500`.
 
-**Payload `201`:**
+### PUT `/api/modules/full/{id}` (update full)
+### PUT `/api/modules/full?id={id}` (update full por query)
 
-```json
-{ "id": 12, "title": "Introdução", "notes": "Texto opcional" }
-```
+Mesmo corpo do create full.
+
+**Respostas:** `200`, `400`, `404`, `500`.
 
 ### PUT `/api/modules/{id}` (update)
 
-| Parâmetro | Local | Tipo    | Obrigatório | Descrição                 |
-|---|---|---|---|---|
-| `id`      | path  | integer | Sim         | Identificador do módulo.  |
+Mesmo corpo do create legacy.
 
-**Corpo (JSON)**
-
-| Campo   | Tipo   | Obrigatório | Descrição                         |
-|---|---|---|---|
-| `title` | string | Não         | Nome do módulo.                   |
-| `notes` | string | Não         | Anotações ou descrição longa.     |
-
-- **Exemplo de requisição**:
-
-```json
-{
-  "title": "Introdução (atualizado)",
-  "notes": "Atualizando apontamentos"
-}
-```
-
-**Respostas**
-
-| Status    | Descrição              | Payload                |
-|---|---|---|
-| `200`     | Módulo atualizado.     | Ver exemplo abaixo.    |
-| `400/422` | Erro de validação.     | Formato de erro comum. |
-| `404`     | Módulo não encontrado. | Formato de erro comum. |
-| `500`     | Falha inesperada.      | Formato de erro comum. |
-
-**Payload `200`:**
-
-```json
-{ "id": 12, "title": "Introdução (atualizado)", "notes": "Atualizando apontamentos" }
-```
+**Respostas:** `200`, `400`, `404`, `500`.
 
 ### DELETE `/api/modules/{id}` (delete)
 
-| Parâmetro | Local | Tipo    | Obrigatório | Descrição                 |
-|---|---|---|---|---|
-| `id`      | path  | integer | Sim         | Identificador do módulo.  |
+**Respostas:** `200`, `404`, `409`, `500`.
 
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
+## LessonController
 
-```http
-DELETE /api/modules/12
-```
+Base path: `/api/modules/{moduleId}/lessons`
 
-**Respostas**
+### GET `/api/modules/{moduleId}/lessons` (list)
 
-| Status | Descrição                           | Payload                |
-|---|---|---|
-| `204`  | Remoção bem-sucedida.               | Corpo vazio.           |
-| `404`  | Módulo não encontrado.              | Formato de erro comum. |
-| `409`  | Conflito ao excluir (referências).  | Formato de erro comum. |
-| `500`  | Falha inesperada.                   | Formato de erro comum. |
+**Respostas:** `200`, `404`, `500`.
+
+### POST `/api/modules/{moduleId}/lessons` (create)
+
+| Campo        | Tipo    | Obrigatório | Descrição |
+|---|---|---|---|
+| `title`      | string  | Sim         | Título da lição. |
+| `videoUrl`   | string  | Sim         | URL do vídeo (http/https). |
+| `orderIndex` | integer | Sim         | Ordem da lição. |
+
+**Respostas:** `201`, `400`, `404`, `500`.
+
+### PUT `/api/modules/{moduleId}/lessons/{lessonId}` (update)
+
+Mesmo corpo do create.
+
+**Respostas:** `200`, `400`, `404`, `500`.
+
+### DELETE `/api/modules/{moduleId}/lessons/{lessonId}` (delete)
+
+**Respostas:** `200`, `400` (`BUSINESS_VALIDATION` quando lição não pertence ao módulo), `404`, `500`.
+
+## ExerciseController
+
+Base path: `/api/modules/{moduleId}/exercises`
+
+### GET `/api/modules/{moduleId}/exercises` (list)
+
+**Respostas:** `200`, `404`, `500`.
+
+### POST `/api/modules/{moduleId}/exercises` (create)
+
+| Campo        | Tipo               | Obrigatório | Descrição |
+|---|---|---|---|
+| `title`      | string             | Sim         | Título do exercício. |
+| `ojUrl`      | string             | Sim         | URL do juiz online (http/https). |
+| `difficulty` | `ExerciseDifficulty` | Sim       | Dificuldade (enum). |
+| `tags`       | string[]           | Não         | Tags do exercício. |
+
+**Respostas:** `201`, `400`, `404`, `500`.
+
+### PUT `/api/modules/{moduleId}/exercises/{exerciseId}` (update)
+
+Mesmo corpo do create.
+
+**Respostas:** `200`, `400`, `404`, `500`.
+
+### DELETE `/api/modules/{moduleId}/exercises/{exerciseId}` (delete)
+
+**Respostas:** `200`, `400` (`BUSINESS_VALIDATION` quando exercício não pertence ao módulo), `404`, `500`.
+
+## ExtraMaterialController
+
+Base path: `/api/modules/{moduleId}/materials`
+
+### GET `/api/modules/{moduleId}/materials` (list)
+
+**Respostas:** `200`, `404`, `500`.
+
+### POST `/api/modules/{moduleId}/materials` (create)
+
+| Campo   | Tipo   | Obrigatório | Descrição |
+|---|---|---|---|
+| `title` | string | Sim         | Título do material. |
+| `url`   | string | Sim         | URL do material (http/https). |
+
+**Respostas:** `201`, `400`, `404`, `500`.
+
+### PUT `/api/modules/{moduleId}/materials/{materialId}` (update)
+
+Mesmo corpo do create.
+
+**Respostas:** `200`, `400`, `404`, `500`.
+
+### DELETE `/api/modules/{moduleId}/materials/{materialId}` (delete)
+
+**Respostas:** `200`, `400` (`BUSINESS_VALIDATION` quando material não pertence ao módulo), `404`, `500`.
 
 ## PostController
 
@@ -431,195 +287,83 @@ Base path: `/api/posts`
 
 ### GET `/api/posts` (list)
 
-| Parâmetro  | Local | Tipo    | Obrigatório | Descrição                       |
+| Parâmetro | Local | Tipo    | Obrigatório | Descrição                         |
 |---|---|---|---|---|
-| `page`     | query | integer | Não         | Página (default 1).             |
-| `pageSize` | query | integer | Não         | Tamanho da página (default 10). |
-| `tag`      | query | string  | Não         | Filtra por tag.                 |
+| `page`    | query | integer | Não         | Página (default `0`, mínimo `0`). |
+| `size`    | query | integer | Não         | Tamanho (default `20`, `1..100`). |
 
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
-
-```http
-GET /api/posts?page=1&pageSize=10&tag=news
-```
-
-**Respostas**
-
-| Status | Descrição               | Payload                |
-|---|---|---|
-| `200`  | Lista paginada de posts.| Ver exemplo abaixo.    |
-| `500`  | Falha inesperada.       | Formato de erro comum. |
-
-**Payload `200`:**
-
-```json
-{
-  "items": [
-    { "id": 1, "title": "Primeiro post", "tag": "news", "coverImageUrl": "https://...", "mainText": "Conteúdo do post" }
-  ],
-  "page": 1,
-  "pageSize": 10,
-  "total": 3
-}
-```
+**Respostas:** `200`, `400`, `500`.
 
 ### GET `/api/posts/{id}` (get)
 
-| Parâmetro | Local | Tipo    | Obrigatório | Descrição              |
-|---|---|---|---|---|
-| `id`      | path  | integer | Sim         | Identificador do post. |
-
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
-
-```http
-GET /api/posts/1
-```
-
-**Respostas**
-
-| Status | Descrição             | Payload                |
-|---|---|---|
-| `200`  | Detalhe do post.      | Ver exemplo abaixo.    |
-| `404`  | Post não encontrado.  | Formato de erro comum. |
-| `500`  | Falha inesperada.     | Formato de erro comum. |
-
-**Payload `200`:**
-
-```json
-{ "id": 1, "title": "Primeiro post", "tag": "news", "coverImageUrl": "https://...", "mainText": "Conteúdo do post" }
-```
+**Respostas:** `200`, `404`, `500`.
 
 ### POST `/api/posts` (create)
 
-**Corpo (JSON)**
-
-| Campo           | Tipo   | Obrigatório | Descrição            |
+| Campo           | Tipo      | Obrigatório | Descrição |
 |---|---|---|---|
-| `title`         | string | Sim         | Título do post.      |
-| `tag`           | string | Não         | Categoria ou rótulo. |
-| `coverImageUrl` | string | Não         | Imagem de capa.      |
-| `mainText`      | string | Sim         | Conteúdo principal.  |
+| `title`         | string    | Sim         | Título do post. |
+| `tag`           | string    | Não         | Tag/categoria. |
+| `slug`          | string    | Sim         | Slug (`^[a-z0-9]+(?:-[a-z0-9]+)*$`). |
+| `summary`       | string    | Não         | Resumo. |
+| `coverImageUrl` | string    | Não         | URL da capa. |
+| `authorName`    | string    | Sim         | Nome do autor. |
+| `status`        | string    | Sim         | Status do post. |
+| `mainText`      | string    | Não         | Texto principal. |
+| `sections`      | array     | Não         | Seções do post. |
 
-- **Exemplo de requisição**:
+**Respostas:** `201`, `400`, `409`, `500`.
 
-```json
-{
-  "title": "Primeiro post",
-  "tag": "news",
-  "coverImageUrl": "https://...",
-  "mainText": "Conteúdo do post"
-}
-```
+### PUT `/api/posts/{id}` (update)
 
-**Respostas**
+Mesmo corpo do create.
 
-| Status    | Descrição           | Payload                |
-|---|---|---|
-| `201`     | Post criado.        | Ver exemplo abaixo.    |
-| `400/422` | Erro de validação.  | Formato de erro comum. |
-| `500`     | Falha inesperada.   | Formato de erro comum. |
-
-**Payload `201`:**
-
-```json
-{ "id": 2, "title": "Primeiro post", "tag": "news", "coverImageUrl": "https://...", "mainText": "Conteúdo do post" }
-```
+**Respostas:** `200`, `400`, `404`, `409`, `500`.
 
 ### DELETE `/api/posts/{id}` (delete)
 
-| Parâmetro | Local | Tipo    | Obrigatório | Descrição              |
-|---|---|---|---|---|
-| `id`      | path  | integer | Sim         | Identificador do post. |
-
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
-
-```http
-DELETE /api/posts/1
-```
-
-**Respostas**
-
-| Status | Descrição              | Payload                |
-|---|---|---|
-| `204`  | Remoção bem-sucedida.  | Corpo vazio.           |
-| `404`  | Post não encontrado.   | Formato de erro comum. |
-| `500`  | Falha inesperada.      | Formato de erro comum. |
+**Respostas:** `200`, `404`, `500`.
 
 ## RegistrationController
 
 Base path: `/api/registrations`
 
-### POST `/api/registrations` (create)
-
-**Corpo (JSON)**
-
-| Campo         | Tipo   | Obrigatório | Descrição                  |
-|---|---|---|---|
-| `name`        | string | Sim         | Nome completo.             |
-| `email`       | string | Sim         | E-mail de contato.         |
-| `whatsapp`    | string | Não         | Telefone/WhatsApp.         |
-| `institution` | string | Não         | Universidade ou organização.|
-
-- **Exemplo de requisição**:
-
-```json
-{
-  "name": "Fulano",
-  "email": "fulano@email.com",
-  "whatsapp": "+55 45 99999-9999",
-  "institution": "UNIOESTE"
-}
-```
-
-**Respostas**
-
-| Status    | Descrição             | Payload                |
-|---|---|---|
-| `201`     | Inscrição criada.     | Ver exemplo abaixo.    |
-| `400/422` | Erro de validação.    | Formato de erro comum. |
-| `409`     | Inscrição duplicada.  | Formato de erro comum. |
-| `500`     | Falha inesperada.     | Formato de erro comum. |
-
-**Payload `201`:**
-
-```json
-{ "id": 7, "name": "Fulano", "email": "fulano@email.com", "whatsapp": "+55 45 99999-9999", "institution": "UNIOESTE" }
-```
-
 ### GET `/api/registrations` (list)
 
-| Parâmetro     | Local | Tipo    | Obrigatório | Descrição                       |
+| Parâmetro | Local | Tipo    | Obrigatório | Descrição                         |
 |---|---|---|---|---|
-| `page`        | query | integer | Não         | Página (default 1).             |
-| `pageSize`    | query | integer | Não         | Tamanho da página (default 10). |
-| `institution` | query | string  | Não         | Filtra por instituição.         |
+| `page`    | query | integer | Não         | Página (default `0`, mínimo `0`). |
+| `size`    | query | integer | Não         | Tamanho (default `20`, `1..100`). |
 
-- **Corpo**: vazio.
-- **Exemplo de requisição**:
+**Respostas:** `200`, `400`, `500`.
 
-```http
-GET /api/registrations?page=1&pageSize=10
-```
+### GET `/api/registrations/{id}` (get)
 
-**Respostas**
+**Respostas:** `200`, `404`, `500`.
 
-| Status | Descrição                    | Payload                |
-|---|---|---|
-| `200`  | Lista paginada de inscrições.| Ver exemplo abaixo.    |
-| `500`  | Falha inesperada.            | Formato de erro comum. |
+### POST `/api/registrations` (create)
 
-**Payload `200`:**
+| Campo                | Tipo   | Obrigatório | Descrição |
+|---|---|---|---|
+| `name`               | string | Sim         | Nome completo. |
+| `email`              | string | Sim         | Email. |
+| `whatsapp`           | string | Não         | WhatsApp. |
+| `institution`        | string | Não         | Instituição. |
+| `campus`             | string | Sim         | Campus. |
+| `course`             | string | Sim         | Curso. |
+| `semester`           | string | Sim         | Semestre. |
+| `howDidYouHear`      | string | Sim         | Como conheceu. |
+| `previousExperience` | string | Não         | Experiência prévia. |
+| `message`            | string | Não         | Mensagem adicional. |
 
-```json
-{
-  "items": [
-    { "id": 7, "name": "Fulano", "email": "fulano@email.com", "whatsapp": "+55 45 99999-9999", "institution": "UNIOESTE" }
-  ],
-  "page": 1,
-  "pageSize": 10,
-  "total": 120
-}
-```
+**Respostas:** `201`, `400`, `409`, `500`.
+
+### PUT `/api/registrations/{id}` (update)
+
+Mesmo corpo do create.
+
+**Respostas:** `200`, `400`, `404`, `409`, `500`.
+
+### DELETE `/api/registrations/{id}` (delete)
+
+**Respostas:** `200`, `404`, `500`.
